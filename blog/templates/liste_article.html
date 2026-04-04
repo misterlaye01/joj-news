@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Liste-article
+{% endblock %}
+
+{% block contenu %}
+    <h1> Bienvenu sur la page des articles</h1>
+    <p>Nombre d’articles : {{ articles|length }}</p>
+    {% for article in articles %}
+    
+        <h2>{{article.titre}}</h2>
+        <h2>{{article.date_publication}}</h2>
+        <h2>{{article.categorie}}</h2>
+
+    {% endfor %}
+
+{% endblock %}
