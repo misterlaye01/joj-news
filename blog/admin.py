@@ -4,7 +4,7 @@ from .models import Categorie, Article, Commentaire
 
 @admin.register(Categorie)
 class CategorieAdmin(admin.ModelAdmin):
-    list_display = ('nomCategorie', 'description', 'dateCreation', 'createur')
+    list_display = ('nomCategorie', 'description', 'dateCreation')
     search_fields = ('nomCategorie', 'description')
     list_filter = ('dateCreation',)
 
