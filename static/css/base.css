@@ -1,0 +1,107 @@
+:root {
+    --brand: #0d6efd;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --surface: #ffffff;
+    --border: rgba(15, 23, 42, 0.08);
+    --joj-green: #00853f;
+    --joj-yellow: #fcd116;
+    --joj-red: #e31b23;
+    --joj-dark: #0f172a;
+    --joj-bg: #f8fafc;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(252, 209, 22, 0.18), transparent 35%),
+        linear-gradient(180deg, #ffffff 0%, #f3f6fb 100%);
+    color: var(--joj-dark);
+}
+
+header {
+    background: #fff;
+    border-bottom: 3px solid var(--joj-yellow);
+}
+
+.site-logo {
+    width: 128px;
+    object-fit: contain;
+}
+
+main {
+    min-height: calc(100vh - 80px);
+}
+
+.card {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 1rem;
+}
+
+.article-card {
+    transition: transform .2s ease, box-shadow .2s ease;
+    border-radius: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+.article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.10) !important;
+}
+
+.article-img {
+    object-fit: cover;
+    min-height: 220px;
+}
+
+.article-link {
+    transition: color .2s ease;
+}
+
+.article-link:hover {
+    color: var(--brand) !important;
+}
+
+.navbar-brand {
+    letter-spacing: .2px;
+}
+
+
+/* ------------------------------ DETAIL ARTICLE ------------------------------ */
+.article-detail-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+}
+
+.article-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.comment-item {
+    background: #fff;
+}
+
+.comment-form p {
+    margin-bottom: 1rem;
+}
+
+.comment-form input,
+.comment-form textarea,
+.comment-form select {
+    width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: .75rem;
+    padding: .75rem 1rem;
+    outline: none;
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus,
+.comment-form select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 .2rem rgba(13, 110, 253, .15);
+}
+

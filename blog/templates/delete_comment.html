@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Supprimer le commentaire{% endblock %}
+
+{% block contenu %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="alert alert-danger border-0 mb-4">
+                        <h2 class="h4 fw-bold mb-2">Confirmer la suppression</h2>
+                        <p class="mb-0">Voulez-vous vraiment supprimer ce commentaire ? Cette action est irréversible.</p>
+                    </div>
+
+                    <blockquote class="blockquote p-3 bg-light rounded-3 border-start border-4 border-danger mb-4">
+                        <p class="mb-0">{{ object.message }}</p>
+                    </blockquote>
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <div class="d-flex flex-column flex-sm-row gap-2">
+                            <button type="submit" class="btn btn-danger px-4">
+                                Oui, supprimer
+                            </button>
+                            <a href="{% url 'detail_article' object.article.pk %}" class="btn btn-outline-secondary px-4">
+                                Non, annuler
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Modifier le commentaire{% endblock %}
+
+{% block contenu %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-lg-5">
+                    <h2 class="h3 fw-bold mb-4">Modifier le commentaire</h2>
+
+                    <form method="post" class="comment-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+                        <div class="d-flex flex-column flex-sm-row gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary px-4">
+                                Enregistrer
+                            </button>
+                            <a href="{% url 'detail_article' object.article.pk %}" class="btn btn-outline-secondary px-4">
+                                Annuler
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -16,7 +16,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Commentaire)
 class CommentaireAdmin(admin.ModelAdmin):
-    list_display = ('article', 'dateCommentaire', 'username')
+    list_display = ('message', 'dateCommentaire', 'article', 'username')
     search_fields = ('message',)
     list_filter = ('dateCommentaire',)
 
