@@ -1,34 +1,72 @@
 {% extends 'base.html' %}
 
+{% block title %} JOJ - Inscription {% endblock %}
+
 {% block contenu %}
-<h1>Inscription</h1>
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="mb-4">
+                        <h1 class="display-6 fw-bold mb-2">Inscription</h1>
+                        <p class="text-secondary mb-0">
+                            Creez votre compte pour commenter et suivre les actualites JOJ.
+                        </p>
+                    </div>
 
-<form method="post">
-    {% csrf_token %}
-    
-    <div class="mb-3">
-        <label for="">Nom d'utilisateur</label>
-        {{ form.username }}
-    </div>
-    
-    <div class="mb-3">
-        <label for="">Email</label>
-        {{ form.email }}
-    </div>
-    
-    <div class="mb-3">
-        <label for="">Mot de passe</label>
-        {{ form.password1 }}
-    </div>
-    
-    <div class="mb-3">
-        <label for="">Confirmer mot de passe</label>
-        {{ form.password2 }}
-    </div>
-    
-    <button type="submit">Créer le compte</button>
-</form>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
 
-<p>Déjà inscrit ? <a href="{% url 'login' %}">Se connecter</a></p>
+                    <form method="post" class="row g-3">
+                        {% csrf_token %}
 
+                        <div class="col-12">
+                            <label class="form-label" for="{{ form.username.id_for_label }}">Nom d'utilisateur</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                <div class="text-danger small mt-1">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                <div class="text-danger small mt-1">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label" for="{{ form.password1.id_for_label }}">Mot de passe</label>
+                            {{ form.password1 }}
+                            {% if form.password1.errors %}
+                                <div class="text-danger small mt-1">{{ form.password1.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label" for="{{ form.password2.id_for_label }}">Confirmer mot de passe</label>
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}
+                                <div class="text-danger small mt-1">{{ form.password2.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-12 d-grid">
+                            <button type="submit" class="btn btn-warning btn-lg">Creer le compte</button>
+                        </div>
+                    </form>
+
+                    <p class="text-secondary mt-4 mb-0">
+                        Deja inscrit ? <a href="{% url 'login' %}">Se connecter</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

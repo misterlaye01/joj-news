@@ -3,18 +3,52 @@
 {% block title %} JOJ - Connexion {% endblock %}
 
 {% block contenu %}
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="mb-4">
+                        <h1 class="display-6 fw-bold mb-2">Se connecter</h1>
+                        <p class="text-secondary mb-0">
+                            Accedez a votre espace pour commenter et suivre les actualites.
+                        </p>
+                    </div>
 
-<h1>Se connecter</h1>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
 
-<form method="post">
+                    <form method="post" class="d-grid gap-3">
+                        {% csrf_token %}
 
-    {% csrf_token %}
-    {{ form.as_p }}
+                        <div>
+                            <label class="form-label" for="{{ form.username.id_for_label }}">Nom d'utilisateur</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                <div class="text-danger small mt-1">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
 
-    <button type="submit">Se connecter</button>
+                        <div>
+                            <label class="form-label" for="{{ form.password.id_for_label }}">Mot de passe</label>
+                            {{ form.password }}
+                            {% if form.password.errors %}
+                                <div class="text-danger small mt-1">{{ form.password.errors }}</div>
+                            {% endif %}
+                        </div>
 
-</form>
+                        <button type="submit" class="btn btn-warning btn-lg">Se connecter</button>
+                    </form>
 
-<p>Pas encore de compte ? <a href="{% url 'signup' %}">Créer un compte</a></p>
-
+                    <p class="text-secondary mt-4 mb-0">
+                        Pas encore de compte ? <a href="{% url 'signup' %}">Creer un compte</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
